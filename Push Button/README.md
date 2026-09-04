@@ -97,7 +97,9 @@ Para conectar o push button ao arduíno utilizando a configuração pull-up exte
 
 Agora vamos montar o código?  Este código funciona para os dois primeiros modos de pull que já aprendemos. Iniciamos definindo uma variável “botao” como a porta digital 2 que está ligada ao botão:
 
-```cpp int botao = 2; ```
+```cpp
+int botao = 2;
+```
 
 Em seguida, no ```cpp void setup()```, iremos configurar o modo de operação do pino do botão como INPUT e a comunicação serial:
 
