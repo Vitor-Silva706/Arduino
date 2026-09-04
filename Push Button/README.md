@@ -65,3 +65,46 @@ O botão possui 4 terminais divididos em dois pares interligados internamente A-
 - Cabo de alimentação do Arduino.
 
 Normalmente, o Arduino utiliza pinos configurados como saída (OUTPUT) como no caso dos leds e entrada (INPUT) como no caso dos push buttons,  para enviar e receber sinais, respectivamente. Há três maneiras de se conectar o botão, sendo eles: 
+
+# Modo Pull-Down Externo
+
+Neste modo, utilizamos um resistor externo para deixar o pino em nível lógico 0. Quando tiver pressão, a chave táctil permite a passagem de energia, mostrando o valor 1.
+
+# Circuito:
+
+Para conectar o push button ao arduíno em pull-down externo, iremos ligar o 5v do microcontrolador ao terminal C do botão, a porta digital 2 ao terminal B e o GND ao resistor conectado ao terminal D (figura 6).
+
+<div align="center">
+<h3>Figura 6: Circuito Pull-Down Externo </h3> 
+<img width="540" height="345" alt="Image"src="https://github.com/user-attachments/assets/8f8ff69e-1230-4d1a-94ee-0362a9986c09" />
+<h4>Fonte: autoria própria  </h4>
+</div>
+
+# Modo Pull-UP Externo:
+
+Funciona de maneira semelhante ao Pull-Down externo, com a diferença de que agora o resistor vai deixar o nível lógico em 1 quando o push button estiver em repouso. Quando o botão é pressionado, o valor lido passa a ser 0.
+# Circuito: 
+
+Para conectar o push button ao arduíno utilizando a configuração pull-up externa, o resistor deve ser conectado entre o pino de alimentação 5V  e o terminal C do botão. Em seguida, a porta digital 2 do arduino deve ser conectada ao terminal A, enquanto o GND deve ser conectado ao terminal D (figura 7).
+
+<div align="center">
+<h3>Figura7 - Circuito Pull-UP Externo </h3> 
+<img width="540" height="345" alt="Image"src="https://github.com/user-attachments/assets/e0ca6d34-ac34-4d1e-a30c-b40b9c99b483" />
+<h4>Fonte: autoria própria  </h4>
+</div>
+
+# Código
+
+Agora vamos montar o código?  Este código funciona para os dois primeiros modos de pull que já aprendemos. Iniciamos definindo uma variável “botao” como a porta digital 2 que está ligada ao botão:
+
+```cpp int botao = 2; ```
+
+Em seguida, no ```cpp void setup()```, iremos configurar o modo de operação do pino do botão como INPUT e a comunicação serial:
+
+```cpp
+pinMode(botao, INPUT);
+Serial.begin(9600);
+```
+Na função ```cpp void loop()```, por hora queremos apenas testar os modos de funcionamento do push button, vamos com a ajuda do Serial.println() ver a leitura do estado atual do botão com o “digitalRead”:
+
+```cpp Serial.println(digitalRead(botao));```
