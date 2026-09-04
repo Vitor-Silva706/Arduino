@@ -107,4 +107,6 @@ Serial.begin(9600);
 ```
 Na função ```cpp void loop()```, por hora queremos apenas testar os modos de funcionamento do push button, vamos com a ajuda do Serial.println() ver a leitura do estado atual do botão com o “digitalRead”:
 
-```cpp Serial.println(digitalRead(botao));```
+```cpp
+Serial.println(digitalRead(botao));
+```
