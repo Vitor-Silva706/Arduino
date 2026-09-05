@@ -88,7 +88,7 @@ Funciona de maneira semelhante ao Pull-Down externo, com a diferença de que ago
 Para conectar o push button ao arduíno utilizando a configuração pull-up externa, o resistor deve ser conectado entre o pino de alimentação 5V  e o terminal C do botão. Em seguida, a porta digital 2 do arduino deve ser conectada ao terminal A, enquanto o GND deve ser conectado ao terminal D (figura 7).
 
 <div align="center">
-<h3>Figura7 - Circuito Pull-UP Externo </h3> 
+<h3>Figura 7 - Circuito Pull-UP Externo </h3> 
 <img width="540" height="345" alt="Image"src="https://github.com/user-attachments/assets/e0ca6d34-ac34-4d1e-a30c-b40b9c99b483" />
 <h4>Fonte: autoria própria  </h4>
 </div>
@@ -112,3 +112,60 @@ Na função ```cpp void loop()```, por hora queremos apenas testar os modos de f
 ```cpp
 Serial.println(digitalRead(botao));
 ```
+
+# Modo Pull-UP Interno: 
+
+**Explicação:**  Este modo serve para mostrar as mesmas leituras do pull-up externo. O que vai diferenciar é que utilizaremos uma configuração chamada INPUT_PULLUP para utilizarmos um resistor interno do arduino, dispensando assim o uso de um componente externo do resistor e do 5v que também será fornecido internamente pelo arduíno.
+
+# Circuito: 
+
+Para conectar o push button ao arduíno em pull-up interno, iremos ligar a porta digital 2 ao terminal A e o GND será conectado ao terminal D no botão (figura 8).
+
+<div align="center">
+<h3>Figura 8 - Circuito Pull-UP Interno </h3> 
+<img width="540" height="345" alt="Image"src="https://github.com/user-attachments/assets/4f2f947a-762e-4c10-8a45-f15d09b9c996" />
+<h4>Fonte: autoria própria  </h4>
+</div>
+
+# Código
+
+Para o pull-up interno, teremos o seguinte código:
+
+```cpp
+
+int botao = 2;
+void setup()
+{
+  pinMode(botao, INPUT_PULLUP);
+  Serial.begin(9600);
+}
+
+
+void loop()
+{
+  Serial.println(digitalRead(botao));
+}
+``` 
+Parecido com o anterior, não é mesmo? O resultado é igual, mas tem uma diferença, em void setup mudamos o modo de operação pinMode para INPUT_PULLUP:
+
+```cpp
+pinMode(botao, INPUT_PULLUP);
+```
+
+Agora, se entenderam e seguiram todas as instruções, vocês conseguiram ligar o botão de maneira correta e funcionando bem. Contudo, a depender do projeto em que você queira adicionar o push button, pode haver um problema de leitura, pois os botões são feitos de pequenas placas metálicas que podem causar pequenas vibrações e por consequência, várias leituras indesejadas. Isso é chamado de  efeito “bouncing”, mas não se preocupe, existe uma maneira de resolver isso através do “debounce”, que é explicado neste material [Debounce Button](https://github.com/GrupoDePesquisaEmHardware/Arduino/tree/6eccbfedbeac836ce2f4a751d2a1707bf2e20419/Debounce%20Button). Agradeço a leitura e até a próxima.
+
+Link do circuito pull-up externo no tinkercad:
+
+https://www.tinkercad.com/things/hAnxHzENGbJ-cool-stantia-rottis?sharecode=3Iu_9VK-pS53y6Ate3SuCoe_7bVEcmhb2N5Gwht5FvM
+
+Link do circuito pull-up externo no tinkercad:
+
+https://www.tinkercad.com/things/klDDDvqrcbe-shiny-turing?sharecode=q2ijc8HkVCTr99aes9_KCirOMbL5O5Q6Sc21t9wKJYY
+
+Link do circuito pull-up interno no tinkercad:
+
+https://github.com/GrupoDePesquisaEmHardware/Arduino/tree/6eccbfedbeac836ce2f4a751d2a1707bf2e20419/Debounce%20Button
+
+# Contribuidor
+
+<p><a href = > Vitor Manoel </a></p>
