@@ -168,4 +168,4 @@ https://github.com/GrupoDePesquisaEmHardware/Arduino/tree/6eccbfedbeac836ce2f4a7
 
 # Contribuidor
 
-<p><a href = > Vitor Manoel </a></p>
+<p><a href = https://github.com/Vitor-Silva706> Vitor Manoel </a></p>
